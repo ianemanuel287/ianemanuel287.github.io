@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amor</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; padding-top: 50px; background: #fff0f5;">
+    <h1 id="mensaje" style="font-size: 36px; color: #d81b60;">hola amooooor</h1>
+    <p id="regalo" style="font-size: 28px; margin-top: 20px;">te tengo un regalo :)</p>
+    <p id="pregunta" style="font-size: 26px; margin-top: 10px;">quieres verlo??</p>
+
+    <div style="margin-top: 30px;">
+        <button id="siBtn" style="font-size: 24px; padding: 12px 24px; margin: 10px; border-radius: 10px; border: none; background: #ff5ca8; color: white; transition: all 0.2s ease;">si</button>
+        <button id="noBtn" style="font-size: 24px; padding: 12px 24px; margin: 10px; border-radius: 10px; border: none; background: #f0f0f0; color: #333;">no</button>
+    </div>
+    <button id="cajaRegalo" type="button" aria-label="Abrir regalo" hidden style="font-size: 110px; padding: 10px; border: none; background: transparent; cursor: pointer;">🎁</button>
+    <p id="mensajeRegalo" hidden style="font-size: 28px; color: #d81b60;">Te amo mucho mucho mucho </p>
+    <section id="videoContenedor" hidden style="margin: 20px auto; max-width: 900px;">
+        <h2 style="font-size: 28px; color: #d81b60;">te dedico esta cancion </h2>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+            <div aria-hidden="true" style="font-size: 38px; line-height: 1.8;">💕<br>💖<br>💗</div>
+            <video controls autoplay playsinline style="width: 100%; max-width: 720px; min-width: 0;">
+                <source src="te%20amo%20y%20mas.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <div aria-hidden="true" style="font-size: 38px; line-height: 1.8;">💗<br>💖<br>💕</div>
+        </div>
+        <button id="poemaBtn" type="button" style="font-size: 22px; padding: 10px 30px; margin-top: 20px; border: none; border-radius: 10px; background: #ff5ca8; color: white; cursor: pointer;">poema</button>
+        <div id="poemaContenedor" hidden>
+            <p style="font-size: 24px; line-height: 1.6; color: #d81b60;">El amor verdadero es un lazo que no sabe de distancias eternas; no importa cuántas veces nos soltemos, el destino siempre encuentra la forma de volvernos a unir.</p>
+            <button id="finBtn" type="button" style="font-size: 22px; padding: 10px 30px; margin-top: 10px; border: none; border-radius: 10px; background: #ff5ca8; color: white; cursor: pointer;">fin</button>
+        </div>
+    </section>
+    <section id="mensajeFinal" hidden>
+        <h1 style="font-size: 36px; color: #d81b60;">es todo mi vida</h1>
+        <p style="font-size: 32px; color: #d81b60;">muuuuuuuuuuuuuuuuuuuuuuucks</p>
+        <img src="beso.png" alt="Imagen de un beso" style="width: 100%; max-width: 400px; height: auto;">
+    </section>
+
+    <script>
+        const siBtn = document.getElementById('siBtn');
+        const noBtn = document.getElementById('noBtn');
+
+        noBtn.addEventListener('click', () => {
+            let size = 24;
+            const interval = setInterval(() => {
+                size += 4;
+                siBtn.style.fontSize = size + 'px';
+                siBtn.style.transform = 'scale(1.1)';
+                if (size >= 80) {
+                    clearInterval(interval);
+                }
+            }, 120);
+        });
+
+        siBtn.addEventListener('click', () => {
+            document.getElementById('mensaje').textContent = '¡Yeiiii! gracias amor ❤️';
+            document.getElementById('regalo').textContent = 'te quiero mucho';
+            document.getElementById('pregunta').textContent = 'mira tu regalo especial';
+            siBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+            document.getElementById('cajaRegalo').hidden = false;
+        });
+
+        document.getElementById('cajaRegalo').addEventListener('click', () => {
+            document.getElementById('mensaje').hidden = true;
+            document.getElementById('regalo').hidden = true;
+            document.getElementById('pregunta').hidden = true;
+            document.getElementById('cajaRegalo').hidden = true;
+            document.getElementById('mensajeRegalo').hidden = false;
+            document.getElementById('videoContenedor').hidden = false;
+        });
+
+        document.getElementById('poemaBtn').addEventListener('click', () => {
+            document.getElementById('poemaBtn').hidden = true;
+            document.getElementById('poemaContenedor').hidden = false;
+        });
+
+        document.getElementById('finBtn').addEventListener('click', () => {
+            document.getElementById('mensajeRegalo').hidden = true;
+            document.getElementById('videoContenedor').hidden = true;
+            document.querySelector('#videoContenedor video').pause();
+            document.getElementById('mensajeFinal').hidden = false;
+        });
+    </script>
+</body>
+</html>
